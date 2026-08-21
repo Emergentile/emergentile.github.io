@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171714">
+  <meta name="description" content="Download EmergentileGUI or the complete EmergentileOS.">
+  <title>Emergentile — A desktop for what comes next</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+  <header class="nav">
+    <a class="wordmark" href="#top" aria-label="Emergentile home"><span class="mark">E</span><span>Emergentile</span></a>
+    <nav aria-label="Main navigation"><a href="#gui">GUI</a><a href="#os">OS</a><a href="#install">Install</a></nav>
+    <a class="nav-download" href="#downloads">Download</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker">THE EMERGENTILE PROJECT · VERSION 1</p>
+        <h1>A Linux desktop for<br><em>what emerges.</em></h1>
+        <p class="lead">Calm, adaptable, and open. Install the desktop on your current Debian system—or start fresh with EmergentileOS.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#downloads">Get Emergentile</a>
+          <a class="button secondary" href="#compare">Choose your edition</a>
+        </div>
+      </div>
+      <figure class="laptop-showcase">
+        <img src="assets/emergentile-notebook-hero.png?v=6" alt="EmergentileGUI desktop running on a normally proportioned notebook with a floating top panel" width="1706" height="922">
+      </figure>
+    </section>
+
+    <section class="intro" id="compare">
+      <p class="kicker">TWO WAYS TO BEGIN</p>
+      <h2>Your system.<br>Your starting point.</h2>
+      <div class="edition-grid">
+        <article class="edition" id="gui">
+          <span class="edition-number">01</span><div class="edition-icon warm">E</div>
+          <p class="kicker">DESKTOP SESSION</p><h3>EmergentileGUI</h3>
+          <p>Add the Emergentile shell, XFWM, applications, Installer, Help, About, and Dev tools to an existing Debian-based installation.</p>
+          <ul><li>Keeps your current Linux installation</li><li>Adds a selectable GDM session</li><li>Best for Raspberry Pi OS and Debian</li></ul>
+          <a class="text-link" href="#gui-download">Install the GUI <span>→</span></a>
+        </article>
+        <article class="edition dark-card" id="os">
+          <span class="edition-number">02</span><div class="edition-icon dark">E</div>
+          <p class="kicker">COMPLETE SYSTEM</p><h3>EmergentileOS</h3>
+          <p>A complete Debian-based live system with the standard Linux kernel, GDM, EmergentileGUI, networking, audio, browser, and utilities.</p>
+          <ul><li>Bootable ISO and disk IMG</li><li>AMD64 and ARM64 editions</li><li>Live environment and installer</li></ul>
+          <a class="text-link" href="#os-downloads">Download the OS <span>→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="downloads" id="downloads">
+      <div class="section-head"><div><p class="kicker">DOWNLOADS</p><h2>Choose your path.</h2></div><p>Files are accompanied by SHA-256 checksums. Generated OS images appear here after the image build and website packaging steps complete.</p></div>
+
+      <article class="download-block" id="gui-download">
+        <div><span class="platform">FOR EXISTING DEBIAN SYSTEMS</span><h3>EmergentileGUI 1</h3><p>Source bundle · GTK/XFCE desktop session</p></div>
+        <div class="download-actions"><a class="button primary artifact-link" href="downloads/emergentilegui-1-source.tar.gz" download>Download GUI</a><a class="checksum artifact-link" href="downloads/emergentilegui-1-source.tar.gz.sha256">SHA-256</a></div>
+      </article>
+
+      <div class="install-command" id="install">
+        <div><span>INSTALL AFTER DOWNLOADING</span><code>tar -xzf emergentilegui-1-source.tar.gz<br>cd Emergentile<br>sudo make install-system</code></div>
+        <button id="copyCommand" type="button">Copy commands</button>
+      </div>
+
+      <div id="os-downloads" class="os-table">
+        <div class="os-row os-heading"><span>Architecture</span><span>ISO</span><span>Disk image</span></div>
+        <div class="os-row recommended"><span><b>AMD64</b><small>Intel and AMD PCs</small></span><a class="artifact-link" href="downloads/emergentilegui-1-amd64.iso" download>Download ISO</a><a class="artifact-link" href="downloads/emergentilegui-1-amd64.img" download>Download IMG</a></div>
+        <div class="os-row"><span><b>ARM64</b><small>64-bit UEFI ARM systems</small></span><a class="artifact-link" href="downloads/emergentilegui-1-arm64.iso" download>Download ISO</a><a class="artifact-link" href="downloads/emergentilegui-1-arm64.img" download>Download IMG</a></div>
+      </div>
+      <p class="arm-note">ARM64 images target standards-compliant UEFI hardware. Raspberry Pi boards may require a board-specific boot image.</p>
+    </section>
+
+    <section class="features">
+      <p class="kicker">INCLUDED</p><h2>A complete foundation.</h2>
+      <div class="feature-grid"><article><b>✦</b><h3>Adaptive shell</h3><p>Searchable menu, workspaces, persistent dock pins, task tracking, and intelligent auto-hide.</p></article><article><b>◫</b><h3>Native applications</h3><p>Installer, Help, About, and Emergentile Dev are included in every full image.</p></article><article><b>⌘</b><h3>Standard Linux</h3><p>Debian packages, standard kernels, XFWM, GTK, NetworkManager, PipeWire, and familiar utilities.</p></article></div>
+    </section>
+  </main>
+
+  <footer><a class="wordmark" href="#top"><span class="mark">E</span><span>Emergentile</span></a><p>The Emergentile Project</p><p>Version 1 · Development release</p></footer>
+  <div class="toast" id="toast" role="status">Commands copied</div>
+  <script src="app.js?v=3"></script>
+</body>
+</html>
