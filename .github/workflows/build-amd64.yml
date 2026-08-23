@@ -1,0 +1,55 @@
+name: Build AMD64 EmergentileOS
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  amd64:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Free runner disk space
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc
+          df -h /
+
+      - name: Extract Emergentile source
+        run: |
+          tar -xzf downloads/emergentilegui-1-source.tar.gz
+          chmod +x Emergentile/image-build/*.sh Emergentile/image-build/*.py
+
+      - name: Install image-build dependencies
+        run: sudo Emergentile/image-build/install-build-deps.sh
+
+      - name: Build native AMD64 ISO-hybrid
+        run: |
+          sudo Emergentile/image-build/build.sh \
+            --arch amd64 \
+            --format iso \
+            --work "$RUNNER_TEMP/emergentile-work" \
+            --output "$GITHUB_WORKSPACE/dist"
+          sudo chown -R "$USER:$USER" dist
+
+      - name: Verify and prepare GitHub-sized assets
+        run: |
+          cd dist
+          sha256sum -c emergentilegui-1-amd64.iso.sha256
+          ln emergentilegui-1-amd64.iso emergentilegui-1-amd64.img
+          sha256sum emergentilegui-1-amd64.img > emergentilegui-1-amd64.img.sha256
+          split -b 1900M -d -a 2 \
+            emergentilegui-1-amd64.iso \
+            emergentilegui-1-amd64.hybrid.part-
+
+      - name: Publish AMD64 downloads to Version 1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload v1.0 --clobber \
+            dist/emergentilegui-1-amd64.hybrid.part-* \
+            dist/emergentilegui-1-amd64.iso.sha256 \
+            dist/emergentilegui-1-amd64.img.sha256
