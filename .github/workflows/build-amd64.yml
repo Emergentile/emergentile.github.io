@@ -16,7 +16,7 @@ jobs:
       - name: Prepare Debian build container
         run: |
           apt-get update
-          apt-get install -y ca-certificates git gh
+          apt-get install -y ca-certificates git gh python3
           df -h /
 
       - uses: actions/checkout@v4
