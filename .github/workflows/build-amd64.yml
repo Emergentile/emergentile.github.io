@@ -9,17 +9,14 @@ permissions:
 jobs:
   amd64:
     runs-on: ubuntu-24.04
-    container:
-      image: debian:trixie
     timeout-minutes: 330
     steps:
-      - name: Prepare Debian build container
-        run: |
-          apt-get update
-          apt-get install -y ca-certificates git gh python3
-          df -h /
-
       - uses: actions/checkout@v4
+
+      - name: Free runner disk space
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc
+          df -h /
 
       - name: Extract Emergentile source
         run: |
@@ -27,15 +24,22 @@ jobs:
           chmod +x Emergentile/image-build/*.sh Emergentile/image-build/*.py
 
       - name: Install image-build dependencies
-        run: Emergentile/image-build/install-build-deps.sh
+        run: |
+          sudo Emergentile/image-build/install-build-deps.sh
+          curl -fL \
+            https://deb.debian.org/debian/pool/main/l/live-build/live-build_20250505+deb13u1_all.deb \
+            -o "$RUNNER_TEMP/live-build.deb"
+          sudo apt-get install -y "$RUNNER_TEMP/live-build.deb"
+          lb --version
 
       - name: Build native AMD64 ISO-hybrid
         run: |
-          Emergentile/image-build/build.sh \
+          sudo Emergentile/image-build/build.sh \
             --arch amd64 \
             --format iso \
             --work "$RUNNER_TEMP/emergentile-work" \
             --output "$GITHUB_WORKSPACE/dist"
+          sudo chown -R "$USER:$USER" dist
 
       - name: Verify and prepare GitHub-sized assets
         run: |
