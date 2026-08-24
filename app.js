@@ -20,6 +20,15 @@ themeToggle.addEventListener('click', () => {
 
 updateThemeToggle();
 
+document.querySelector('#contributeForm').addEventListener('submit', event => {
+  event.preventDefault();
+  const username = document.querySelector('#githubUsername').value.trim().replace(/^@/, '');
+  if (!username) return;
+  const title = encodeURIComponent(`Contributor request: @${username}`);
+  const body = encodeURIComponent(`Hi, I am @${username}.\n\nI would like to contribute to Emergentile.\n\nWhat I would like to work on:\n`);
+  window.open(`https://github.com/Emergentile/emergentile.github.io/issues/new?title=${title}&body=${body}`, '_blank', 'noopener,noreferrer');
+});
+
 document.querySelector('#copyCommand').addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(commands);

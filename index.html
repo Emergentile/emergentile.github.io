@@ -13,7 +13,7 @@
 <body>
   <header class="nav">
     <a class="wordmark" href="#top" aria-label="Emergentile home"><span class="mark">E</span><span>Emergentile</span></a>
-    <nav aria-label="Main navigation"><a href="#gui">GUI</a><a href="#os">OS</a><a href="#about">About</a><a href="#install">Install</a></nav>
+    <nav aria-label="Main navigation"><a href="#gui">GUI</a><a href="#os">OS</a><a href="#contribute">Contribute</a><a href="#about">About</a><a href="#install">Install</a></nav>
     <div class="nav-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span aria-hidden="true">☾</span></button><a class="nav-download" href="#downloads">Download</a></div>
   </header>
 
@@ -78,6 +78,11 @@
       <div class="feature-grid"><article><b>✦</b><h3>Adaptive shell</h3><p>Searchable menu, workspaces, persistent dock pins, task tracking, and intelligent auto-hide.</p></article><article><b>◫</b><h3>Native applications</h3><p>Installer, Help, About, and Emergentile Dev are included in every full image.</p></article><article><b>⌘</b><h3>Standard Linux</h3><p>Debian packages, standard kernels, XFWM, GTK, NetworkManager, PipeWire, and familiar utilities.</p></article></div>
     </section>
 
+    <section class="contribute" id="contribute">
+      <div><p class="kicker">BUILD IT TOGETHER</p><h2>Join Emergentile.</h2><p>Want to improve the desktop, apps, website, or documentation? Introduce yourself through GitHub and say what you would like to work on.</p></div>
+      <form class="contribute-form" id="contributeForm"><label for="githubUsername">Your GitHub username</label><div><span aria-hidden="true">@</span><input id="githubUsername" name="username" type="text" autocomplete="username" inputmode="text" pattern="[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?" maxlength="39" placeholder="username" required><button class="button primary" type="submit">Request to contribute ↗</button></div><small>You will be taken to GitHub to submit a public contributor request. A GitHub account is required.</small></form>
+    </section>
+
     <section class="about-project" id="about">
       <div class="about-heading"><p class="kicker">THE STORY</p><h2>A young idea,<br>built into a real desktop.</h2><p class="about-intro">Emergentile began with curiosity about how operating systems work—and the determination to create one.</p></div>
       <article class="about-copy">
@@ -92,6 +97,6 @@
 
   <footer><a class="wordmark" href="#top"><span class="mark">E</span><span>Emergentile</span></a><p>The Emergentile Project</p><p>Version 1 · Development release</p></footer>
   <div class="toast" id="toast" role="status">Commands copied</div>
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
