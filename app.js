@@ -2,6 +2,24 @@ const commands = `tar -xzf emergentilegui-1-source.tar.gz
 cd Emergentile
 sudo make install-system`;
 
+const themeToggle = document.querySelector('#themeToggle');
+
+function updateThemeToggle() {
+  const dark = document.documentElement.dataset.theme === 'dark';
+  themeToggle.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+  themeToggle.setAttribute('aria-pressed', String(dark));
+  themeToggle.querySelector('span').textContent = dark ? '☀' : '☾';
+}
+
+themeToggle.addEventListener('click', () => {
+  const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = nextTheme;
+  localStorage.setItem('emergentile-theme', nextTheme);
+  updateThemeToggle();
+});
+
+updateThemeToggle();
+
 document.querySelector('#copyCommand').addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(commands);

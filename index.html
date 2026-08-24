@@ -7,13 +7,14 @@
   <meta name="description" content="Download EmergentileGUI or the complete EmergentileOS.">
   <title>Emergentile — A desktop for what comes next</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=5">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('emergentile-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script>
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
   <header class="nav">
     <a class="wordmark" href="#top" aria-label="Emergentile home"><span class="mark">E</span><span>Emergentile</span></a>
     <nav aria-label="Main navigation"><a href="#gui">GUI</a><a href="#os">OS</a><a href="#about">About</a><a href="#install">Install</a></nav>
-    <a class="nav-download" href="#downloads">Download</a>
+    <div class="nav-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span aria-hidden="true">☾</span></button><a class="nav-download" href="#downloads">Download</a></div>
   </header>
 
   <main id="top">
@@ -91,6 +92,6 @@
 
   <footer><a class="wordmark" href="#top"><span class="mark">E</span><span>Emergentile</span></a><p>The Emergentile Project</p><p>Version 1 · Development release</p></footer>
   <div class="toast" id="toast" role="status">Commands copied</div>
-  <script src="app.js?v=3"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>
