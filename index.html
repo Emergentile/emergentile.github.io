@@ -13,7 +13,7 @@
 <body>
   <header class="nav">
     <a class="wordmark" href="#top" aria-label="Emergentile home"><span class="mark">E</span><span>Emergentile</span></a>
-    <nav aria-label="Main navigation"><a href="#gui">GUI</a><a href="#os">OS</a><a href="#about">About</a><a href="#install">Install</a></nav>
+    <nav aria-label="Main navigation"><a href="#status">Status</a><a href="#gui">GUI</a><a href="#os">OS</a><a href="#about">About</a><a href="#install">Install</a></nav>
     <div class="nav-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span aria-hidden="true">☾</span></button><a class="nav-download" href="#downloads">Download</a></div>
   </header>
 
@@ -28,6 +28,11 @@
           <a class="button secondary" href="#compare">Choose your edition</a>
         </div>
       </div>
+    </section>
+
+    <section class="github-status" id="status" aria-labelledby="statusTitle">
+      <div><p class="kicker">LIVE FROM GITHUB</p><h2 id="statusTitle">What I’m working on.</h2></div>
+      <a class="status-card" id="githubStatus" href="https://github.com/Emergentile" target="_blank" rel="noreferrer"><span class="status-dot" aria-hidden="true"></span><span><b id="githubAction">Loading public activity…</b><small id="githubDetails">@Emergentile on GitHub</small></span><time id="githubTime"></time><strong aria-hidden="true">↗</strong></a>
     </section>
 
     <section class="intro" id="compare">
@@ -92,6 +97,6 @@
 
   <footer><a class="wordmark" href="#top"><span class="mark">E</span><span>Emergentile</span></a><p>The Emergentile Project</p><p>Version 1 · Development release</p></footer>
   <div class="toast" id="toast" role="status">Commands copied</div>
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>

@@ -20,6 +20,45 @@ themeToggle.addEventListener('click', () => {
 
 updateThemeToggle();
 
+const eventLabels = {
+  PushEvent: 'Pushed code to',
+  CreateEvent: 'Created something in',
+  IssuesEvent: 'Updated an issue in',
+  IssueCommentEvent: 'Commented in',
+  PullRequestEvent: 'Updated a pull request in',
+  ReleaseEvent: 'Published a release in',
+  WatchEvent: 'Starred'
+};
+
+function relativeTime(date) {
+  const seconds = Math.max(1, Math.round((Date.now() - date.getTime()) / 1000));
+  const units = [['year', 31536000], ['month', 2592000], ['day', 86400], ['hour', 3600], ['minute', 60]];
+  for (const [unit, size] of units) {
+    if (seconds >= size) return `${Math.floor(seconds / size)} ${unit}${seconds >= size * 2 ? 's' : ''} ago`;
+  }
+  return 'just now';
+}
+
+fetch('https://api.github.com/users/Emergentile/events/public?per_page=1', {
+  headers: { Accept: 'application/vnd.github+json' }
+}).then(response => {
+  if (!response.ok) throw new Error('GitHub activity unavailable');
+  return response.json();
+}).then(([event]) => {
+  if (!event) throw new Error('No public activity');
+  const repository = event.repo.name;
+  const date = new Date(event.created_at);
+  document.querySelector('#githubAction').textContent = `${eventLabels[event.type] || 'Active in'} ${repository.split('/').pop()}`;
+  document.querySelector('#githubDetails').textContent = repository;
+  const time = document.querySelector('#githubTime');
+  time.textContent = relativeTime(date);
+  time.dateTime = event.created_at;
+  document.querySelector('#githubStatus').href = `https://github.com/${repository}`;
+}).catch(() => {
+  document.querySelector('#githubAction').textContent = 'Building Emergentile';
+  document.querySelector('#githubDetails').textContent = 'View public work on GitHub';
+});
+
 document.querySelector('#copyCommand').addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(commands);
