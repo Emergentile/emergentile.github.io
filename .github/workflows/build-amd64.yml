@@ -26,6 +26,7 @@ jobs:
       - name: Install image-build dependencies
         run: |
           sudo Emergentile/image-build/install-build-deps.sh
+          sudo apt-get install -y debian-archive-keyring
           curl -fL \
             https://deb.debian.org/debian/pool/main/l/live-build/live-build_20250505+deb13u1_all.deb \
             -o "$RUNNER_TEMP/live-build.deb"
