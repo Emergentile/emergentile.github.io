@@ -20,6 +20,12 @@ themeToggle.addEventListener('click', () => {
 
 updateThemeToggle();
 
+if (localStorage.getItem('emergentile-owner') !== 'true') {
+  document.querySelectorAll('.visitor-counter[data-src]').forEach(counter => {
+    counter.src = counter.dataset.src;
+  });
+}
+
 document.querySelector('#contributeForm').addEventListener('submit', event => {
   event.preventDefault();
   const username = document.querySelector('#githubUsername').value.trim().replace(/^@/, '');

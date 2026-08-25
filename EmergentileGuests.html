@@ -7,7 +7,7 @@
   <meta name="description" content="Emergentile website guest counter and visit log.">
   <title>EmergentileGuests — Visitor log</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script>document.documentElement.dataset.theme=localStorage.getItem('emergentile-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script>
+  <script>document.documentElement.dataset.theme=localStorage.getItem('emergentile-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');if(new URLSearchParams(location.search).get('owner')==='1')localStorage.setItem('emergentile-owner','true')</script>
   <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
@@ -21,11 +21,22 @@
       <h1>Website visitor log.</h1>
       <p>This counter records page views of the Emergentile website without cookies or personal visitor profiles.</p>
       <a class="guest-counter" href="https://hits.sh/emergentile.github.io/" target="_blank" rel="noreferrer">
-        <img src="https://hits.sh/emergentile.github.io.svg?view=today-total&amp;label=guests&amp;color=68796c&amp;style=for-the-badge" alt="Emergentile website visits today and in total">
+        <img class="visitor-counter" data-src="https://hits.sh/emergentile.github.io.svg?view=today-total&amp;label=guests&amp;color=68796c&amp;style=for-the-badge" alt="Emergentile website visits today and in total">
       </a>
       <a class="button primary" href="https://hits.sh/emergentile.github.io/" target="_blank" rel="noreferrer">Open detailed visit log ↗</a>
+      <button class="button secondary owner-toggle" id="ownerToggle" type="button"></button>
       <small>The total represents page views, not guaranteed unique people. Refreshing may add another view.</small>
     </section>
   </main>
+  <script>
+  const owner = localStorage.getItem('emergentile-owner') === 'true';
+  const toggle = document.querySelector('#ownerToggle');
+  toggle.textContent = owner ? 'This browser is excluded ✓' : 'This is me — exclude this browser';
+  if (!owner) document.querySelectorAll('.visitor-counter[data-src]').forEach(counter => counter.src = counter.dataset.src);
+  toggle.addEventListener('click', () => {
+    localStorage.setItem('emergentile-owner', 'true');
+    location.reload();
+  });
+  </script>
 </body>
 </html>
