@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171714">
+  <meta name="description" content="Emergentile website guest counter and visit log.">
+  <title>EmergentileGuests — Visitor log</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.dataset.theme=localStorage.getItem('emergentile-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script>
+  <link rel="stylesheet" href="styles.css?v=8">
+</head>
+<body>
+  <header class="nav">
+    <a class="wordmark" href="index.html"><span class="mark">E</span><span>Emergentile</span></a>
+    <a class="nav-download" href="index.html">Back to website</a>
+  </header>
+  <main class="guests-page">
+    <section class="guests-card">
+      <p class="kicker">EMERGENTILEGUESTS</p>
+      <h1>Website visitor log.</h1>
+      <p>This counter records page views of the Emergentile website without cookies or personal visitor profiles.</p>
+      <a class="guest-counter" href="https://hits.sh/emergentile.github.io/" target="_blank" rel="noreferrer">
+        <img src="https://hits.sh/emergentile.github.io.svg?view=today-total&amp;label=guests&amp;color=68796c&amp;style=for-the-badge" alt="Emergentile website visits today and in total">
+      </a>
+      <a class="button primary" href="https://hits.sh/emergentile.github.io/" target="_blank" rel="noreferrer">Open detailed visit log ↗</a>
+      <small>The total represents page views, not guaranteed unique people. Refreshing may add another view.</small>
+    </section>
+  </main>
+</body>
+</html>
