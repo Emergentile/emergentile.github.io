@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Emergentile
+Comment=Emergentile warm GTK theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Emergentile
+IconTheme=Adwaita
+CursorTheme=Adwaita
+ButtonLayout=close,minimize,maximize:

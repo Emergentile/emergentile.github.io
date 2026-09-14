@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+exec gjs -m /usr/local/share/emergentile/installer/main.js

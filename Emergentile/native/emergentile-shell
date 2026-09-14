@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+
+if [ -n "${EMERGENTILE_DIR:-}" ]; then
+    APP_DIR="$EMERGENTILE_DIR"
+elif [ -d /usr/local/share/emergentile ]; then
+    APP_DIR=/usr/local/share/emergentile
+else
+    APP_DIR="$HOME/.local/share/emergentile"
+fi
+export XDG_CURRENT_DESKTOP=Emergentile
+export XDG_SESSION_DESKTOP=emergentile
+export GTK_THEME="${GTK_THEME:-Adwaita}"
+
+exec gjs -m "$APP_DIR/shell/main.js"

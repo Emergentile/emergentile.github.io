@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Emergentile
+Comment=A calm, adaptive Linux desktop
+Exec=/usr/local/bin/emergentile-session
+TryExec=/usr/bin/xfwm4
+Type=Application
+X-LightDM-DesktopName=Emergentile

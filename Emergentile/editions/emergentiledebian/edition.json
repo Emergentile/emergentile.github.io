@@ -1,0 +1,9 @@
+{
+  "os_name": "EmergentileDebian",
+  "version": "1",
+  "desktop_title": "EmergentileGUI-1",
+  "accent": "#1a5fb4",
+  "base_distribution": "trixie",
+  "logo": "logo.png",
+  "background": ""
+}

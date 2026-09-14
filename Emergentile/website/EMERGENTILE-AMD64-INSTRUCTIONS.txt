@@ -1,0 +1,35 @@
+EmergentileGUI 1 — AMD64 installation instructions
+=================================================
+
+For 64-bit Intel and AMD computers.
+
+1. Download both files into the same folder:
+   emergentilegui-1-amd64.hybrid.part-00
+   emergentilegui-1-amd64.hybrid.part-01
+
+2. Join the files.
+
+   Linux or macOS:
+   cat emergentilegui-1-amd64.hybrid.part-* > emergentilegui-1-amd64.iso
+
+   Windows PowerShell:
+   cmd /c copy /b emergentilegui-1-amd64.hybrid.part-00+emergentilegui-1-amd64.hybrid.part-01 emergentilegui-1-amd64.iso
+
+3. Verify the download (recommended).
+
+   Download emergentilegui-1-amd64.iso.sha256 into the same folder, then run:
+   sha256sum -c emergentilegui-1-amd64.iso.sha256
+
+   It should report: OK
+
+4. Write emergentilegui-1-amd64.iso to a USB drive with Raspberry Pi Imager,
+   balenaEtcher, GNOME Disks, Rufus (DD mode), or another image-writing tool.
+   WARNING: writing the image erases the selected USB drive.
+
+5. Restart the computer, open its boot menu, and boot from the USB drive.
+   Choose the Emergentile live system or installer.
+
+The ISO is a hybrid image, so the same joined file may be renamed with an
+.img extension when an image-writing program requires that filename suffix.
+
+Project website: https://emergentile.github.io/

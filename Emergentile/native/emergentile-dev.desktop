@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Emergentile Dev
+Comment=Design and build a customized Emergentile OS edition
+Exec=/usr/local/bin/emergentile-dev
+TryExec=/usr/local/bin/emergentile-dev
+Icon=applications-development
+Terminal=false
+Type=Application
+Categories=Development;
+Keywords=Emergentile;Developer;Customize;ISO;IMG;OS;Build;

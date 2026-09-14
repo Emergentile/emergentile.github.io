@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_config xmlns="http://openbox.org/3.4/rc">
+  <resistance><strength>10</strength><screen_edge_strength>20</screen_edge_strength></resistance>
+  <focus><focusNew>yes</focusNew><followMouse>no</followMouse><raiseOnFocus>no</raiseOnFocus></focus>
+  <placement><policy>Smart</policy><center>yes</center><monitor>Active</monitor></placement>
+  <theme><name>Clearlooks</name><titleLayout>NLIMC</titleLayout><keepBorder>yes</keepBorder><animateIconify>yes</animateIconify></theme>
+  <desktops><number>4</number><firstdesk>1</firstdesk><popupTime>500</popupTime></desktops>
+  <margins><top>48</top><bottom>72</bottom><left>0</left><right>0</right></margins>
+  <applications><application class="Emergentile-shell"><decor>no</decor><desktop>all</desktop><layer>below</layer><skip_pager>yes</skip_pager><skip_taskbar>yes</skip_taskbar></application></applications>
+  <keyboard>
+    <chainQuitKey>C-g</chainQuitKey>
+    <keybind key="A-space"><action name="Execute"><command>emergentile-shell --launcher</command></action></keybind>
+    <keybind key="W-Return"><action name="Execute"><command>x-terminal-emulator</command></action></keybind>
+    <keybind key="W-e"><action name="Execute"><command>xdg-open $HOME</command></action></keybind>
+    <keybind key="W-d"><action name="ShowDesktop"/></keybind>
+    <keybind key="W-q"><action name="Close"/></keybind>
+    <keybind key="W-Left"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><width>50%</width><height>100%</height></action></keybind>
+    <keybind key="W-Right"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>50%</x><y>0</y><width>50%</width><height>100%</height></action></keybind>
+    <keybind key="C-A-Left"><action name="GoToDesktop"><to>left</to><wrap>yes</wrap></action></keybind>
+    <keybind key="C-A-Right"><action name="GoToDesktop"><to>right</to><wrap>yes</wrap></action></keybind>
+    <keybind key="Print"><action name="Execute"><command>gnome-screenshot -i</command></action></keybind>
+  </keyboard>
+  <mouse><dragThreshold>8</dragThreshold><doubleClickTime>200</doubleClickTime><screenEdgeWarpTime>400</screenEdgeWarpTime></mouse>
+</openbox_config>

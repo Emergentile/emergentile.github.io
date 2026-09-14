@@ -1,0 +1,40 @@
+#!/bin/sh
+set -eu
+
+if [ "$(id -u)" -ne 0 ]; then
+    printf '%s\n' 'This helper must be run through pkexec or sudo.' >&2
+    exit 1
+fi
+
+export DEBIAN_FRONTEND=noninteractive
+printf '%s\n' 'Connecting to configured Debian internet repositories…'
+printf '%s\n' 'Downloading the latest package indexes…'
+apt-get update
+printf '%s\n' 'Downloading and installing desktop components, fonts, and SuperTuxKart…'
+apt-get install -y \
+    ca-certificates \
+    gjs gir1.2-gtk-3.0 gir1.2-wnck-3.0 \
+    xfwm4 xfce4-settings xfce4-terminal pcmanfm \
+    pavucontrol network-manager-gnome blueman \
+    fonts-adf-baskervald supertuxkart polkit-kde-agent-1 \
+    live-build debootstrap xorriso isolinux syslinux-common \
+    qemu-user-static binfmt-support rsync
+
+printf '%s\n' 'Installing boot-loader tools available for this architecture…'
+for package in grub-pc-bin grub-efi-amd64-bin grub-efi-arm64-bin; do
+    candidate=$(apt-cache policy "$package" | awk '/Candidate:/{print $2; exit}')
+    if [ -n "$candidate" ] && [ "$candidate" != '(none)' ]; then
+        apt-get install -y "$package"
+    fi
+done
+
+printf '%s\n' 'Installing the Emergentile icon and theme…'
+install -d /usr/share/icons/hicolor/scalable/apps /usr/share/themes/Emergentile/gtk-3.0
+install -m 0644 /usr/local/share/emergentile/assets/emergentile.svg /usr/share/icons/hicolor/scalable/apps/emergentile.svg
+install -m 0644 /usr/local/share/emergentile/theme/Emergentile/index.theme /usr/share/themes/Emergentile/index.theme
+install -m 0644 /usr/local/share/emergentile/theme/Emergentile/gtk-3.0/gtk.css /usr/share/themes/Emergentile/gtk-3.0/gtk.css
+gtk-update-icon-cache -f /usr/share/icons/hicolor >/dev/null 2>&1 || true
+printf '%s\n' 'Refreshing the font cache…'
+fc-cache -f
+
+printf '%s\n' 'Emergentile components installed successfully.'

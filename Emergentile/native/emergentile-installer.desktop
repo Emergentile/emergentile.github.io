@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Emergentile Installer
+Comment=Install and repair Emergentile desktop components
+Exec=/usr/local/bin/emergentile-installer
+TryExec=/usr/local/bin/emergentile-installer
+Icon=emergentile
+Terminal=false
+Type=Application
+Categories=System;
+Keywords=Emergentile;Install;Repair;Theme;Fonts;

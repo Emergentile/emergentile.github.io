@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+
+cd /usr/local/src/emergentile
+sh install-system.sh
+
+# Make Emergentile the desktop identity while preserving GDM's session chooser.
+mkdir -p /etc/skel/.config/emergentile
+printf '%s\n' default > /etc/skel/.config/emergentile/theme
+
+python3 /usr/local/src/emergentile/image-build/apply-edition.py
+
+# Source is useful for repair but should not occupy the installed user's home.
+chmod -R a+rX /usr/local/src/emergentile

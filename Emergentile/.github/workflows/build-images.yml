@@ -1,0 +1,30 @@
+name: Build EmergentileGUI images
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+jobs:
+  images:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [amd64, arm64]
+        format: [iso, img]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install image builder
+        run: sudo image-build/install-build-deps.sh
+      - name: Enable cross-architecture execution
+        run: sudo update-binfmts --enable
+      - name: Build image
+        run: sudo image-build/build.sh --arch "${{ matrix.arch }}" --format "${{ matrix.format }}" --output "$GITHUB_WORKSPACE/dist"
+      - name: Normalize ownership
+        run: sudo chown -R "$USER:$USER" dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: emergentilegui-1-${{ matrix.arch }}-${{ matrix.format }}
+          path: dist/*
+          if-no-files-found: error

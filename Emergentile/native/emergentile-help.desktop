@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Emergentile Help
+Comment=Learn how to use the Emergentile desktop
+Exec=/usr/local/bin/emergentile-help
+TryExec=/usr/local/bin/emergentile-help
+Icon=help-browser
+Terminal=false
+Type=Application
+Categories=Utility;Documentation;
+Keywords=Emergentile;Help;Guide;Documentation;Support;

@@ -1,0 +1,54 @@
+#!/bin/sh
+set -eu
+
+if [ -n "${EMERGENTILE_DIR:-}" ]; then
+    APP_DIR="$EMERGENTILE_DIR"
+elif [ -d /usr/local/share/emergentile ]; then
+    APP_DIR=/usr/local/share/emergentile
+else
+    APP_DIR="$HOME/.local/share/emergentile"
+fi
+export EMERGENTILE_DIR="$APP_DIR"
+export XDG_CURRENT_DESKTOP=Emergentile
+export XDG_SESSION_DESKTOP=emergentile
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+mkdir -p "$XDG_CONFIG_HOME/emergentile"
+
+# XFCE supplies mature window management, decorations and compositing while the
+# Emergentile process supplies the desktop, panel, launcher, dock and controls.
+# xfsettingsd makes the user's XFCE fonts, cursor, keyboard and theme settings
+# available without starting the XFCE panel or desktop.
+xfsettingsd --replace >/dev/null 2>&1 &
+SETTINGS_PID=$!
+
+# pkexec needs an authentication agent inside a standalone desktop session.
+# Start the first agent installed on the system so Emergentile Installer and
+# other administrative applications can show a password dialog.
+POLKIT_AGENT_PID=
+for agent in \
+    /usr/lib/aarch64-linux-gnu/libexec/polkit-kde-authentication-agent-1 \
+    /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 \
+    /usr/libexec/polkit-mate-authentication-agent-1 \
+    /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+do
+    if [ -x "$agent" ]; then
+        "$agent" >/dev/null 2>&1 &
+        POLKIT_AGENT_PID=$!
+        break
+    fi
+done
+
+xfwm4 --replace --compositor=on >/dev/null 2>&1 &
+WM_PID=$!
+
+cleanup() {
+    kill "$WM_PID" 2>/dev/null || true
+    kill "$SETTINGS_PID" 2>/dev/null || true
+    if [ -n "$POLKIT_AGENT_PID" ]; then
+        kill "$POLKIT_AGENT_PID" 2>/dev/null || true
+    fi
+}
+trap cleanup EXIT INT TERM
+
+gjs -m "$APP_DIR/shell/main.js"

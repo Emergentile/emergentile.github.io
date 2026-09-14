@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=About EmergentileGUI
+Comment=Information about the Emergentile desktop
+Exec=/usr/local/bin/emergentile-about
+TryExec=/usr/local/bin/emergentile-about
+Icon=emergentile
+Terminal=false
+Type=Application
+Categories=System;
+Keywords=Emergentile;About;Version;Desktop;
