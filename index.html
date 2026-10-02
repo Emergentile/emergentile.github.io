@@ -8,7 +8,7 @@
   <title>Emergentile — A desktop for what comes next</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script>document.documentElement.dataset.theme=localStorage.getItem('emergentile-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script>
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
   <header class="nav">
@@ -98,6 +98,18 @@
         <a class="button about-contact" href="mailto:theemergentileproject@gmail.com">Contact the project <span>→</span></a>
       </article>
     </section>
+    <aside class="chess-promo" aria-labelledby="chess-promo-title">
+      <div class="chess-promo-art" aria-hidden="true"><span>♞</span></div>
+      <div class="chess-promo-copy">
+        <p class="chess-promo-label">FROM THE CREATOR OF EMERGENTILE</p>
+        <h2 id="chess-promo-title">Your next move? A coffee break.</h2>
+        <p>Meet KoffieChess. Play the beginner bot or a friend, pick your theme, and make your move.</p>
+      </div>
+      <div class="chess-promo-actions">
+        <a class="button" href="downloads/koffiechess.html" download="koffiechess.html">Get KoffieChess <span aria-hidden="true">↗</span></a>
+        <span>Free HTML game · No account needed</span>
+      </div>
+    </aside>
   </main>
 
   <footer><a class="wordmark" href="#top"><span class="mark">E</span><span>Emergentile</span></a><a href="Emergentile/">Browse source</a><a class="guest-link" href="EmergentileGuests.html"><img class="visitor-counter" data-src="https://hits.sh/emergentile.github.io/guests-20260825.svg?label=guests&amp;color=68796c&amp;style=flat-square" alt="Emergentile website guest count"> View guest log</a><p>The Emergentile Project</p><p>Version 1 · Development release</p></footer>

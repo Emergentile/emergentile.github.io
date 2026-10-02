@@ -15,3 +15,13 @@ html[data-theme="dark"]{--paper:#151513;--ink:#f2eee5;--muted:#aaa49a;--line:rgb
 
 /* Leave room between stacked download cards. */
 .download-block + .download-block { margin-top: 16px; }
+
+/* KoffieChess promo */
+.chess-promo{margin:36px clamp(24px,7vw,120px);padding:28px;display:flex;align-items:center;gap:28px;background:#243e36;color:#faf5e9;border:1px solid #496154;border-radius:18px}
+.chess-promo-art{width:104px;height:104px;flex:0 0 104px;display:grid;place-items:center;border-radius:12px;background:conic-gradient(#bdd09f 25%,#829969 0 50%,#bdd09f 0 75%,#829969 0);background-size:52px 52px}
+.chess-promo-art span{font:80px/1 Georgia,serif;color:#172a23;text-shadow:0 2px 0 #e4edd4}
+.chess-promo-copy{flex:1;min-width:0}.chess-promo-label{margin:0 0 10px;font-size:10px;font-weight:700;letter-spacing:.12em;color:#c5d8ae}
+.chess-promo h2{margin:0;font:400 clamp(23px,2.5vw,34px)/1.2 'Libre Baskerville',serif}.chess-promo-copy>p:last-child{margin:12px 0 0;max-width:550px;font-size:14px;line-height:1.6;color:#e0e7d8}
+.chess-promo-actions{display:flex;flex-direction:column;align-items:center;gap:12px}.chess-promo-actions .button{background:#d8e6bd;color:#1b3027;gap:22px;white-space:nowrap}.chess-promo-actions .button:hover{background:#ebf3db}.chess-promo-actions .button:focus-visible{outline:3px solid #fff;outline-offset:4px}.chess-promo-actions>span{font-size:11px;color:#e0e7d8;text-align:center}
+@media(max-width:1000px){.chess-promo{flex-wrap:wrap}.chess-promo-actions{width:100%;align-items:flex-start}}
+@media(max-width:540px){.chess-promo{padding:24px;gap:20px}.chess-promo-art{width:72px;height:72px;flex-basis:72px;background-size:36px 36px}.chess-promo-art span{font-size:58px}.chess-promo-copy{flex-basis:100%}.chess-promo-actions{align-items:stretch}}
